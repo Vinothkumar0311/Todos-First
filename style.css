@@ -1,0 +1,52 @@
+body div{
+    padding: 10px;
+}
+.backgroundbody{
+    background-image: linear-gradient( to left bottom,
+        #36D72F,
+        #21D059,
+        #0089E2         
+    );
+    /*To stop the repection for background linergradient*/
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-left: 26%;
+    padding-top: 7.5%;
+}
+
+body{
+    justify-content: center;
+    margin-top: 137px;
+}
+
+.inputfield{
+    border-radius: 5px;
+    height: 35px;
+    width: 614px;
+    background-image: linear-gradient(#8AE5C0);
+}
+.list{
+    margin-right: 30px;
+}
+.outerinput{
+    border-radius: 5px;
+    background-color: #8AE5C0;
+    width: 65%;
+}
+
+.outerinput2{
+    border-radius: 2%;
+    margin-top: 18px;
+    background-color: #8AE5C0;
+    width: 65%;
+}
+.search{
+    margin: 10px;
+
+}
+
+.button{
+    height: 39px;
+    width: 60px;
+}
