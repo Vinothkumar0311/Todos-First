@@ -16,9 +16,15 @@ form.addEventListener('submit', function (event) {
 function add() {
     let inputValue = input.value;
 
+    //checking duplicate value
+    var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase() );
+
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
         alert("Enter the text to add into list");
+    }
+    else if(isDuplicate){
+        alert("This value already entered in list");
     }
     else {
         //to store the value
