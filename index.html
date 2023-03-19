@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO's</title>
+    <title>Todo's</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="backgroundbody">
-    <div class="outerinput">
-        <div class="search">
-            <input class="inputfield" type="text" placeholder="Add new Todo" autocomplete="false" id="todoinput"/>
-            <button class="button" type="submit">Add</button>
+    <div>
+    <header>
+        <div>
+            Todo's List
         </div>
+    </header>
+    <div class="inputfield">
+        <form id="form">
+            <input type="text" id="input" placeholder="Add new Todo..."><button type="submit" id="btn">+</button>
+            <span></span>
+        </form>
     </div>
-
+    </div>
     <div class="outerinput2">
         <div>
-            <h2>Todo's</h2>
+            <h2>TOdo's List</h2>
         </div>
-        
+        <div id="list">
+
+        </div>
     </div>
+
+    <script src="script.js"></script>
+    
 </body>
 </html>
