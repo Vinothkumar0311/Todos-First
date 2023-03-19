@@ -50,3 +50,23 @@ body{
     height: 39px;
     width: 60px;
 }
+
+.listview{
+    display: flex;
+}
+.btnedit{
+    margin-top: 10px;
+    margin-left: 15%;
+    width: 60px;
+    height: 25px;
+}
+.btndelete{
+    margin-top: 10px;
+    width: 60px;
+    height: 25px;
+}
+
+.btnedit:hover,.btndelete:hover{
+    background-color: aqua;
+    border: 2px solid black;
+}
