@@ -23,9 +23,9 @@ form.addEventListener('submit', function (event) {
     //Adding the data into local storage
     localStorage.setItem('list', JSON.stringify(list));
 
-})
+});
 
-//function to add
+//-----------------         Function to add a value               ------------------
 function add() {
     let inputValue = input.value;
     //checking duplicate value
@@ -46,6 +46,7 @@ function add() {
                 value: index == EditList ? inputValue : q.value,
             }))
             EditList = -1;
+            document.getElementById('btn').innerHTML = "+";
         }
         else {
             //to store the value
@@ -58,29 +59,27 @@ function add() {
     }
 }
 
+// --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo() {
-
+    //Checking list of length is or not to show a msg
     if (list.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
         return;
     }
-
-    // CLEAR ELEMENT BEFORE A RE-RENDER
+    //Clear the input field after enter the value
     forward.innerHTML = '';
-
-    // RENDER TODOS
+    // Adding values to list
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
           <p>${todo.value}</p>   
           <button class="btnedit" data-action="edit">Edit</button>
-          <button class="btndelete" data-action="delete">Delete</button>
-          
+          <button class="btndelete" data-action="delete">Delete</button>          
         </div>`;
     });
 }
 
-//AddEventListener for edit and delete
+//------------------------------       AddEventListener for edit and delete in lisrtView     --------------------------
 forward.addEventListener('click', (event) => {
     var target = event.target;
     var click = target.parentNode;
@@ -92,24 +91,26 @@ forward.addEventListener('click', (event) => {
 
     //action 
     var action = target.dataset.action;
-
+    //Calling function to Edit nor delete
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
 
-//Editlist function
-function editList(wl) {
+// ------------------------------            Editlist function          --------------------------------------------
+function editList(wl) { 
+    forward.innerHTML = '';
+    document.getElementById('btn').innerHTML = "save";
     input.value = list[wl].value;
-    EditList = wl;
+    EditList = wl;  
 }
 
-//Deleting function
+//------------------------           Deleting Function while delete a value in list          --------------------------
 function deleteList(wl) {
     var con = confirm("Are you sure you want to delete this todo?");
-
+    //Checking condition is true or false
     if (con) {
-        console.log('submit');
         list = list.filter((h, index) => wl != index);
+
         addingTodo();
         localStorage.setItem('list', JSON.stringify(list));
     }
