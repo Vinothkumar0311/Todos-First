@@ -10,7 +10,7 @@ let list = JSON.parse(localStorage.getItem('list')) || [];
 let EditList = -1;
 
 //Firststore
-renderTodos();
+addingTodo();
 
 
 //submit
@@ -20,7 +20,7 @@ form.addEventListener('submit', function (event) {
     //Calling function to add into list
     add();
     //Calling function to viewing list in html
-    renderTodos();
+    addingTodo();
 
     localStorage.setItem('list', JSON.stringify(list));
 
@@ -33,10 +33,10 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        alert("Enter the text to add into list");
+        document.getElementById('error').innerHTML="Enter the text to add into list";
     }
     else if (isDuplicate) {
-        alert("This value already entered in list");
+        document.getElementById('error').innerHTML="This value already entered in list";
     }
     else {
         if (EditList >= 0) {
@@ -57,7 +57,7 @@ function add() {
     }
 }
 
-function renderTodos() {
+function addingTodo() {
 
     if (list.length == 0) {
       forward.innerHTML = '<center>Nothing to do!</center>';
@@ -109,10 +109,11 @@ function deleteList(wl) {
     var con = confirm("Are you sure you want to delete this todo?")
 
     if(con){
-        list.filter((k, index) => index != wl);
-        renderTodos();
+        console.log('submit');
+        debugger;
+        list = list.filter((h, index) => index != h);
+        addingTodo();
         localStorage.setItem('list', JSON.stringify(list));
-
     }
 
     // list = list.filter((h, index) => index !== wl);

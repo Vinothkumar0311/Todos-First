@@ -1,6 +1,12 @@
-body div{
-    padding: 10px;
+body div header,h3{
+    padding: 25px;
 }
+
+#form{
+    padding-left: 40px;
+    padding-bottom: 25px;
+}
+
 .backgroundbody{
     background-image: linear-gradient( to left bottom,
         #36D72F,
@@ -17,17 +23,13 @@ body div{
 
 body{
     justify-content: center;
-    margin-top: 137px;
 }
 
 .inputfield{
     border-radius: 5px;
     height: 35px;
-    width: 614px;
+    width: 80%;
     background-image: linear-gradient(#8AE5C0);
-}
-.list{
-    margin-right: 30px;
 }
 .outerinput{
     border-radius: 5px;
@@ -41,19 +43,26 @@ body{
     background-color: #8AE5C0;
     width: 65%;
 }
-.search{
-    margin: 10px;
 
-}
-
-.button{
+#btn{
     height: 39px;
     width: 60px;
+}
+
+#btn:hover{
+    border: 3px solid black;
+    background-color: #0089E2;
+}
+
+#btn:active{
+    transform: translateY(4px);
+    background-color: #36D72F;
 }
 
 .listview{
     display: flex;
 }
+
 .btnedit{
     margin-top: 10px;
     margin-left: 15%;
@@ -69,4 +78,14 @@ body{
 .btnedit:hover,.btndelete:hover{
     background-color: aqua;
     border: 2px solid black;
+}
+
+#error{
+    font-size: larger;
+    color: red;
+}
+
+.view{
+    padding-left: 60px;
+    padding-bottom: 15px;
 }
