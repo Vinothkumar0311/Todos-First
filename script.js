@@ -7,6 +7,8 @@ var forward = document.getElementById("list");
 
 //Getting the data form localstorage
 let list = JSON.parse(localStorage.getItem('list')) || [];
+
+let listLength = list.length;
 //array to store
 let EditList = -1;
 
@@ -46,27 +48,31 @@ function add() {
                 value: index == EditList ? inputValue : q.value,
             }))
             EditList = -1;
+            // Changing the button "+" after saving the value
             document.getElementById('btn').innerHTML = "+";
+            // Clearing the inputfield after edting the value
+            input.value = '';
         }
         else {
-            //to store the value
-
+            // To store the value
             list.push({
                 value: inputValue,
             });
+            // Clearing the Inputfield after entering the value
             input.value = '';
+            listLength += 1;
         }
     }
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo() {
-    //Checking list of length is or not to show a msg
+    // Checking list of length is or not to show a msg
     if (list.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
         return;
     }
-    //Clear the input field after enter the value
+    // Clear the list before enter the value
     forward.innerHTML = '';
     // Adding values to list
     list.forEach((todo, index) => {
@@ -77,19 +83,22 @@ function addingTodo() {
           <button class="btndelete" data-action="delete">Delete</button>          
         </div>`;
     });
+
+    // Showing length in list
+    if (listLength > 0) {
+        document.getElementById('listValue').innerHTML = "Value in Todo List = " + listLength;
+    }
 }
 
-//------------------------------       AddEventListener for edit and delete in lisrtView     --------------------------
+//------------------------------       AddEventListener for edit and delete in listView     --------------------------
 forward.addEventListener('click', (event) => {
+
     var target = event.target;
     var click = target.parentNode;
-
     if (click.className !== 'listview') return;
-
-    var w = click;
+    // Getting id to Edit or Delete the value in list
     var wl = click.id;
-
-    //action 
+    // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
     action == 'edit' && editList(wl);
@@ -97,11 +106,10 @@ forward.addEventListener('click', (event) => {
 });
 
 // ------------------------------            Editlist function          --------------------------------------------
-function editList(wl) { 
-    forward.innerHTML = '';
+function editList(wl) {
     document.getElementById('btn').innerHTML = "save";
     input.value = list[wl].value;
-    EditList = wl;  
+    EditList = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
@@ -110,7 +118,8 @@ function deleteList(wl) {
     //Checking condition is true or false
     if (con) {
         list = list.filter((h, index) => wl != index);
-
+        //Calling Function changes in list
+        listLength -= 1;
         addingTodo();
         localStorage.setItem('list', JSON.stringify(list));
     }

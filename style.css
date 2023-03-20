@@ -88,14 +88,21 @@ body{
 #error{
     font-size: larger;
     color: red;
+    padding-left: 35%;
 }
 
 .view{
     padding-left: 60px;
-    padding-bottom: 15px;
 }
 
 .btnedit:active,.btndelete:active{
     transform: translateY(4px);
     background-color: #36D72F;
+}
+
+#listValue{
+    font-size: large;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
 }
