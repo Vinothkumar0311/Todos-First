@@ -6,8 +6,13 @@ var input = document.getElementById("input");
 var forward = document.getElementById("list");
 
 //array to store the values
-let list = [];
+let list = JSON.parse(localStorage.getItem('list')) || [];
 let EditList = -1;
+
+//Firststore
+renderTodos();
+
+
 //submit
 form.addEventListener('submit', function (event) {
 
@@ -15,13 +20,14 @@ form.addEventListener('submit', function (event) {
     //Calling function to add into list
     add();
     //Calling function to viewing list in html
-    listing();
+    renderTodos();
+
+    localStorage.setItem('list', JSON.stringify(list));
 
 })
 
 //function to add
 function add() {
-    debugger;
     let inputValue = input.value;
     //checking duplicate value
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
@@ -34,27 +40,34 @@ function add() {
     }
     else {
         if (EditList >= 0) {
-            list = list.map((todo, index) => ({
-                ...todo,
-                value: index == EditList ? inputValue : todo.value,
+            list = list.map((q, index) => ({
+                ...q,
+                value: index == EditList ? inputValue : q.value,
             }))
             EditList = -1;
         }
-        else{
-        //to store the value
+        else {
+            //to store the value
 
-        list.push({
-            value: inputValue,
-        });
-        input.value = '';
-    }
+            list.push({
+                value: inputValue,
+            });
+            input.value = '';
+        }
     }
 }
 
-function listing() {
-    //clear
-    forward.innerHTML = '';
+function renderTodos() {
 
+    if (list.length == 0) {
+      forward.innerHTML = '<center>Nothing to do!</center>';
+      return;
+    }
+  
+    // CLEAR ELEMENT BEFORE A RE-RENDER
+    forward.innerHTML = '';
+  
+    // RENDER TODOS
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
@@ -64,8 +77,8 @@ function listing() {
           
         </div>`;
     });
+  }
 
-}
 
 //AddEventListener for edit and delete
 forward.addEventListener('click', (event) => {
@@ -74,14 +87,14 @@ forward.addEventListener('click', (event) => {
 
     if (click.className !== 'listview') return;
 
-    // var w = click;
+    var w = click;
     var wl = click.id;
 
     //action 
     var action = target.dataset.action;
 
     action == 'edit' && editList(wl);
-    // action == 'delete' && deleteList(wl);
+    action == 'delete' && deleteList(wl);
 });
 
 //Editlist function
@@ -92,6 +105,16 @@ function editList(wl) {
 
 //Deleting function
 function deleteList(wl) {
-    list = list.filter((listview, index) => index !== wl);
-    //removeing
+
+    var con = confirm("Are you sure you want to delete this todo?")
+
+    if(con){
+        list.filter((k, index) => index != wl);
+        renderTodos();
+        localStorage.setItem('list', JSON.stringify(list));
+
+    }
+
+    // list = list.filter((h, index) => index !== wl);
+
 }
