@@ -34,11 +34,11 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        document.getElementById('error').innerHTML = "Enter the text to add into list";
+        popupNotification("Enter the text to add into list");
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        document.getElementById('error').innerHTML = "This value already entered in list";
+        popupNotification("This value already entered in list");
     }
     //Adding and editing
     else {
@@ -52,15 +52,18 @@ function add() {
             document.getElementById('btn').innerHTML = "+";
             // Clearing the inputfield after edting the value
             input.value = '';
+            popupNotification("Changes has been saved in list");
         }
         else {
             // To store the value
             list.push({
                 value: inputValue,
+                checked: false
             });
             // Clearing the Inputfield after entering the value
             input.value = '';
             listLength += 1;
+            popupNotification("Changes has been saved in list");
         }
     }
 }
@@ -78,6 +81,7 @@ function addingTodo() {
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
+          <input type="checkbox" class="checkbox" data-action="check" ${todo.checked}>
           <p>${todo.value}</p>   
           <button class="btnedit" data-action="edit">Edit</button>
           <button class="btndelete" data-action="delete">Delete</button>          
@@ -101,9 +105,22 @@ forward.addEventListener('click', (event) => {
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
+    // action == 'check' && checkList(wl);
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
+
+// -------------------------------      Completed Function                                 ------------------------------------------
+function checkList(wl) {
+    list = list.map((todo, index) => ({
+        ...todo,
+        checked: index == wl ? !todo.checked : todo.checked,
+    }));
+
+    addingTodo();
+    localStorage.setItem('list', JSON.stringify(list));
+}
+
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
@@ -123,4 +140,18 @@ function deleteList(wl) {
         addingTodo();
         localStorage.setItem('list', JSON.stringify(list));
     }
+}
+
+//----------------------     Popup message ----------------------------
+
+function popupNotification(msg) {
+
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.remove();
+    }, 1500);
+
 }

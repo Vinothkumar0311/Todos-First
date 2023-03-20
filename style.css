@@ -1,23 +1,24 @@
-body div header,h3{
+body div header,
+h3 {
     padding: 25px;
 }
 
-h2, h3{
+h2,
+h3 {
     text-align: center;
     font-size: x-large;
 }
 
-#form{
+#form {
     padding-left: 40px;
     padding-bottom: 25px;
 }
 
-.backgroundbody{
-    background-image: linear-gradient( to left bottom,
-        #36D72F,
-        #21D059,
-        #0089E2         
-    );
+.backgroundbody {
+    background-image: linear-gradient(to left bottom,
+            #36D72F,
+            #21D059,
+            #0089E2);
     /*To stop the repection for background linergradient*/
     height: 100%;
     background-repeat: no-repeat;
@@ -26,83 +27,100 @@ h2, h3{
     padding-top: 7.5%;
 }
 
-body{
+body {
     justify-content: center;
 }
 
-.inputfield{
+.inputfield {
     height: 35px;
     width: 80%;
     background-image: linear-gradient(#8AE5C0);
 }
-.outerinput{
+
+.outerinput {
     border-radius: 5px;
     background-color: #8AE5C0;
     width: 65%;
 }
 
-.outerinput2{
+.outerinput2 {
     border-radius: 2%;
     margin-top: 18px;
     background-color: #8AE5C0;
     width: 65%;
 }
 
-#btn{
+#btn {
     height: 40px;
     width: 50px;
     font-size: large;
 }
 
-#btn:hover{
+#btn:hover {
     border: 3px solid black;
     background-color: #0089E2;
 }
 
-#btn:active{
+#btn:active {
     transform: translateY(4px);
     background-color: #36D72F;
 }
 
-.listview{
+.listview {
     display: flex;
 }
 
-.btnedit{
+.btnedit {
     margin-top: 10px;
     margin-left: 15%;
     width: 60px;
     height: 25px;
 }
-.btndelete{
+
+.btndelete {
     margin-top: 10px;
     width: 60px;
     height: 25px;
 }
 
-.btnedit:hover,.btndelete:hover{
+.btnedit:hover,
+.btndelete:hover {
     background-color: #0089E2;
     border: 2px solid black;
 }
 
-#error{
+#error {
     font-size: larger;
     color: red;
     padding-left: 35%;
 }
 
-.view{
+.view {
     padding-left: 60px;
 }
 
-.btnedit:active,.btndelete:active{
+.btnedit:active,
+.btndelete:active {
     transform: translateY(4px);
     background-color: #36D72F;
 }
 
-#listValue{
+#listValue {
     font-size: large;
     font-style: italic;
     font-weight: bold;
     text-align: center;
+}
+
+.toast {
+    position: absolute;
+    bottom: 50%;
+    right: 35%;
+    font-size: larger;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgb(234, 87, 87);
+    color: #000000;
+    font-weight: bolder;
+    border-radius: 5px;
 }
