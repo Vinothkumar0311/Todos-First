@@ -31,7 +31,6 @@ body{
 }
 
 .inputfield{
-    border-radius: 5px;
     height: 35px;
     width: 80%;
     background-image: linear-gradient(#8AE5C0);
@@ -50,8 +49,9 @@ body{
 }
 
 #btn{
-    height: 39px;
-    width: 60px;
+    height: 40px;
+    width: 50px;
+    font-size: large;
 }
 
 #btn:hover{
