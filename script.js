@@ -5,7 +5,7 @@ var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
 
-//array to store the values
+//array to store the values and adding to local storage
 let list = JSON.parse(localStorage.getItem('list')) || [];
 let EditList = -1;
 
@@ -110,12 +110,8 @@ function deleteList(wl) {
 
     if(con){
         console.log('submit');
-        debugger;
-        list = list.filter((h, index) => index != h);
+        list = list.filter((h, index) => wl != index);
         addingTodo();
         localStorage.setItem('list', JSON.stringify(list));
     }
-
-    // list = list.filter((h, index) => index !== wl);
-
 }
