@@ -2,6 +2,11 @@ body div header,h3{
     padding: 25px;
 }
 
+h2, h3{
+    text-align: center;
+    font-size: x-large;
+}
+
 #form{
     padding-left: 40px;
     padding-bottom: 25px;
@@ -76,7 +81,7 @@ body{
 }
 
 .btnedit:hover,.btndelete:hover{
-    background-color: aqua;
+    background-color: #0089E2;
     border: 2px solid black;
 }
 
@@ -88,4 +93,9 @@ body{
 .view{
     padding-left: 60px;
     padding-bottom: 15px;
+}
+
+.btnedit:active,.btndelete:active{
+    transform: translateY(4px);
+    background-color: #36D72F;
 }

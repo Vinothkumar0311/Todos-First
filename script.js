@@ -5,23 +5,22 @@ var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
 
-//array to store the values and adding to local storage
+//Getting the data form localstorage
 let list = JSON.parse(localStorage.getItem('list')) || [];
+//array to store
 let EditList = -1;
 
-//Firststore
+//Calling function to getvalue in localstorage
 addingTodo();
-
 
 //submit
 form.addEventListener('submit', function (event) {
-
     event.preventDefault();
     //Calling function to add into list
     add();
     //Calling function to viewing list in html
     addingTodo();
-
+    //Adding the data into local storage
     localStorage.setItem('list', JSON.stringify(list));
 
 })
@@ -33,11 +32,13 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        document.getElementById('error').innerHTML="Enter the text to add into list";
+        document.getElementById('error').innerHTML = "Enter the text to add into list";
     }
+    //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        document.getElementById('error').innerHTML="This value already entered in list";
+        document.getElementById('error').innerHTML = "This value already entered in list";
     }
+    //Adding and editing
     else {
         if (EditList >= 0) {
             list = list.map((q, index) => ({
@@ -60,13 +61,13 @@ function add() {
 function addingTodo() {
 
     if (list.length == 0) {
-      forward.innerHTML = '<center>Nothing to do!</center>';
-      return;
+        forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
+        return;
     }
-  
+
     // CLEAR ELEMENT BEFORE A RE-RENDER
     forward.innerHTML = '';
-  
+
     // RENDER TODOS
     list.forEach((todo, index) => {
         forward.innerHTML += `
@@ -77,8 +78,7 @@ function addingTodo() {
           
         </div>`;
     });
-  }
-
+}
 
 //AddEventListener for edit and delete
 forward.addEventListener('click', (event) => {
@@ -105,10 +105,9 @@ function editList(wl) {
 
 //Deleting function
 function deleteList(wl) {
+    var con = confirm("Are you sure you want to delete this todo?");
 
-    var con = confirm("Are you sure you want to delete this todo?")
-
-    if(con){
+    if (con) {
         console.log('submit');
         list = list.filter((h, index) => wl != index);
         addingTodo();
