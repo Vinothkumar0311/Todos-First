@@ -24,7 +24,7 @@ h3 {
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Algin the view in center*/
-    padding-left: 26%;
+    justify-content: center;
     padding-top: 7%;
 }
 
@@ -75,7 +75,7 @@ body {
     position: absolute;
     right: 40%;
     margin-top: 10px;
-    width: 60px;
+    width: 40px;
     height: 25px;
 }
 
@@ -83,7 +83,7 @@ body {
     position: absolute;
     right: 35%;
     margin-top: 10px;
-    width: 60px;
+    width: 40px;
     height: 25px;
 }
 
@@ -128,3 +128,34 @@ body {
     font-weight: bolder;
     border-radius: 5px;
 }
+
+@media (max-width: 1500px) {
+    .backgroundbody{        
+        margin-left: 30%;
+        }
+  }
+  
+  @media (max-width: 600px) {
+    .backgroundbody{        
+        margin-left: 10%;
+        padding-right: 15%;
+        }
+    .outerinput {
+        width: 100%;    
+        right: 45%;
+
+    }
+    .outerinput2{
+        width: 100%;    
+        right: 45%;
+    }
+    .btnedit{
+        right: 30%;
+    }
+    .btndelete{
+        right: 20%;
+    }
+    .view{
+        padding-left: 1%;
+    }
+  }

@@ -83,8 +83,8 @@ function addingTodo() {
         <div class="listview" id=${index}>
         <input type="checkbox" class="checkbox" data-action="check" >
         <p class="">${todo.value}</p>  
-         <button class="btnedit" data-action="edit">Edit</button>
-        <button class="btndelete" data-action="delete">Delete</button>          
+        <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
+        <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
     });
 
