@@ -71,13 +71,16 @@ body {
 }
 
 .btnedit {
+    position: fixed;
+    margin-left: 30%;
     margin-top: 10px;
-    margin-left: 15%;
     width: 60px;
     height: 25px;
 }
 
 .btndelete {
+    position: fixed;
+    margin-left: 34%;
     margin-top: 10px;
     width: 60px;
     height: 25px;
