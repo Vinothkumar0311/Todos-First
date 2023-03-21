@@ -134,6 +134,12 @@ body {
         margin-left: 30%;
         }
   }
+
+  @media (max-width: 20000px) {
+    .backgroundbody{        
+        left:25%;
+        }
+  }
   
   @media (max-width: 600px) {
     .backgroundbody{        
