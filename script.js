@@ -81,10 +81,10 @@ function addingTodo() {
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
-          <input type="checkbox" class="checkbox" data-action="check" ${todo.checked}>
-          <p>${todo.value}</p>   
-          <button class="btnedit" data-action="edit">Edit</button>
-          <button class="btndelete" data-action="delete">Delete</button>          
+        <input type="checkbox" class="checkbox" data-action="check" >
+        <p class="">${todo.value}</p>  
+         <button class="btnedit" data-action="edit">Edit</button>
+        <button class="btndelete" data-action="delete">Delete</button>          
         </div>`;
     });
 
@@ -111,15 +111,15 @@ forward.addEventListener('click', (event) => {
 });
 
 // -------------------------------      Completed Function                                 ------------------------------------------
-function checkList(wl) {
-    list = list.map((todo, index) => ({
-        ...todo,
-        checked: index == wl ? !todo.checked : todo.checked,
-    }));
+// function checkList(wl) {
+//     list = list.map((todo, index) => ({
+//         ...todo,
+//         checked: index == wl ? !todo.checked : todo.checked,
+//     }));
 
-    addingTodo();
-    localStorage.setItem('list', JSON.stringify(list));
-}
+//     addingTodo();
+//     localStorage.setItem('list', JSON.stringify(list));
+// }
 
 
 // ------------------------------            Editlist function          --------------------------------------------
@@ -138,6 +138,7 @@ function deleteList(wl) {
         //Calling Function changes in list
         listLength -= 1;
         addingTodo();
+        popupNotification("Todo has been delete")
         localStorage.setItem('list', JSON.stringify(list));
     }
 }
