@@ -92,7 +92,7 @@ function addingTodo() {
     if (listLength > 0) {
         document.getElementById('listValue').innerHTML = "Value in Todo List = " + listLength;
     }
-    
+
 }
 
 //------------------------------       AddEventListener for edit and delete in listView     --------------------------
@@ -138,10 +138,10 @@ function deleteList(wl) {
         list = list.filter((h, index) => wl != index);
         //Calling Function changes in list
         listLength -= 1;
-        addingTodo();    
-        if(listLength == 0){
+        addingTodo();
+        if (listLength == 0) {
             document.getElementById('listValue').innerHTML = " ";
-        }   
+        }
         popupNotification("Todo has been delete")
         localStorage.setItem('list', JSON.stringify(list));
     }

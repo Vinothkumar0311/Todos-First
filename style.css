@@ -73,7 +73,7 @@ body {
 
 .btnedit {
     position: absolute;
-    margin-left: 30%;
+    right: 40%;
     margin-top: 10px;
     width: 60px;
     height: 25px;
@@ -81,7 +81,7 @@ body {
 
 .btndelete {
     position: absolute;
-    margin-left: 35%;
+    right: 35%;
     margin-top: 10px;
     width: 60px;
     height: 25px;
