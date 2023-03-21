@@ -63,7 +63,7 @@ function add() {
             // Clearing the Inputfield after entering the value
             input.value = '';
             listLength += 1;
-            popupNotification("Changes has been saved in list");
+            popupNotification("Your new todo task has been added");
         }
     }
 }

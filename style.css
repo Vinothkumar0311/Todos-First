@@ -72,7 +72,7 @@ body {
 }
 
 .btnedit {
-    position: fixed;
+    position: absolute;
     margin-left: 30%;
     margin-top: 10px;
     width: 60px;
@@ -80,8 +80,8 @@ body {
 }
 
 .btndelete {
-    position: fixed;
-    margin-left: 34%;
+    position: absolute;
+    margin-left: 35%;
     margin-top: 10px;
     width: 60px;
     height: 25px;
@@ -119,7 +119,7 @@ body {
 .toast {
     position: absolute;
     bottom: 50%;
-    right: 35%;
+    right: 29%;
     font-size: larger;
     transform: translateX(-50%);
     padding: 10px 20px;
