@@ -135,7 +135,7 @@ body {
         }
   }
 
-  @media (max-width: 20000px) {
+  @media (max-width: 2000px) {
     .backgroundbody{        
         left:25%;
         }
