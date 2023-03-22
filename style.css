@@ -158,4 +158,9 @@ body {
     .view{
         padding-left: 1%;
     }
+    .toast{
+        left: 45%;
+        width: 30%;
+        margin-bottom: 25%;
+    }
   }
