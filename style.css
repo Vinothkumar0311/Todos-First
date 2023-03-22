@@ -129,13 +129,13 @@ body {
     border-radius: 5px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 20000px) {
     .backgroundbody{        
         margin-left: 30%;
         }
   }
 
-  @media (max-width: 2000px) {
+  @media (max-width: 200px) {
     .backgroundbody{        
         left:25%;
         }
