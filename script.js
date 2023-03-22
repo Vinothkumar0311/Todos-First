@@ -38,7 +38,14 @@ function add() {
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
-        popupNotification("This value already entered in list");
+        if (EditList >= 0) {
+            input.value = '';
+            popupNotification("There is no change in your list");
+        }
+        else {
+            popupNotification("This value already entered in list");
+        }
+
     }
     //Adding and editing
     else {
@@ -92,7 +99,6 @@ function addingTodo() {
     if (listLength > 0) {
         document.getElementById('listValue').innerHTML = "Value in Todo List = " + listLength;
     }
-
 }
 
 //------------------------------       AddEventListener for edit and delete in listView     --------------------------
@@ -106,21 +112,10 @@ forward.addEventListener('click', (event) => {
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
-    // action == 'check' && checkList(wl);
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
 
-// -------------------------------      Completed Function                                 ------------------------------------------
-// function checkList(wl) {
-//     list = list.map((todo, index) => ({
-//         ...todo,
-//         checked: index == wl ? !todo.checked : todo.checked,
-//     }));
-
-//     addingTodo();
-//     localStorage.setItem('list', JSON.stringify(list));
-// }
 
 
 // ------------------------------            Editlist function          --------------------------------------------
@@ -157,6 +152,6 @@ function popupNotification(msg) {
     document.body.appendChild(toast);
     setTimeout(() => {
         toast.remove();
-    }, 1500);
+    }, 1300);
 
 }

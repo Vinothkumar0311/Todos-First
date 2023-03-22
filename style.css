@@ -133,13 +133,7 @@ body {
     .backgroundbody{        
         margin-left: 30%;
         }
-  }
-
-  @media (max-width: 200px) {
-    .backgroundbody{        
-        left:25%;
-        }
-  }
+  } 
   
   @media (max-width: 600px) {
     .backgroundbody{        
