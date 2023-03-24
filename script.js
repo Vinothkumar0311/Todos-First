@@ -156,8 +156,10 @@ function deleteList(wl) {
 
 function popupNotification(msg) {
 
+    const toast = document.createElement('div');
     toast.classList.add('toast');
     toast.textContent = msg;
+    document.body.appendChild(toast);
     setTimeout(() => {
         toast.remove();
     }, 1300);
