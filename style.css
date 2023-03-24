@@ -130,37 +130,43 @@ body {
 }
 
 @media (max-width: 20000px) {
-    .backgroundbody{        
+    .backgroundbody {
         margin-left: 30%;
-        }
-  } 
-  
-  @media (max-width: 600px) {
-    .backgroundbody{        
+    }
+}
+
+@media (max-width: 600px) {
+    .backgroundbody {
         margin-left: 10%;
         padding-right: 15%;
-        }
+    }
+
     .outerinput {
-        width: 100%;    
+        width: 100%;
         right: 45%;
 
     }
-    .outerinput2{
-        width: 100%;    
+
+    .outerinput2 {
+        width: 100%;
         right: 45%;
     }
-    .btnedit{
+
+    .btnedit {
         right: 30%;
     }
-    .btndelete{
+
+    .btndelete {
         right: 20%;
     }
-    .view{
+
+    .view {
         padding-left: 1%;
     }
-    .toast{
+
+    .toast {
         left: 45%;
         width: 40%;
         margin-bottom: 2%;
     }
-  }
+}

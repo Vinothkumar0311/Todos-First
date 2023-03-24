@@ -12,8 +12,12 @@ let listLength = list.length;
 //array to store
 let EditList = -1;
 
+let completedList = []
+
 //Calling function to getvalue in localstorage
 addingTodo();
+
+
 
 //submit
 form.addEventListener('submit', function (event) {
@@ -40,6 +44,7 @@ function add() {
     else if (isDuplicate) {
         if (EditList >= 0) {
             input.value = '';
+            document.getElementById('btn').innerHTML = "+";
             popupNotification("There is no change in your list");
         }
         else {
@@ -77,6 +82,8 @@ function add() {
 
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo() {
+
+    
     // Checking list of length is or not to show a msg
     if (list.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
@@ -88,12 +95,17 @@ function addingTodo() {
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
-        <input type="checkbox" class="checkbox" data-action="check" >
-        <p class="">${todo.value}</p>  
+        <i 
+        class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
+        data-action="check"
+        ></i> 
+        <p class="${todo.checked ? 'checked' : ' '}" data-action="check">${todo.value}</p>
         <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
         <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
-    });
+    }
+
+    );
 
     // Showing length in list
     if (listLength > 0) {
@@ -112,10 +124,21 @@ forward.addEventListener('click', (event) => {
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
+    action == 'check' && checkList(wl);
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
 
+// -------------------------------      Completed Function                                 ------------------------------------------
+function checkList(wl) {
+    list = list.map((todo, index) => ({
+        ...todo,
+        checked: index == wl ? !todo.checked : todo.checked,
+    }));
+
+    addingTodo();
+    localStorage.setItem('list', JSON.stringify(list));
+}
 
 
 // ------------------------------            Editlist function          --------------------------------------------
