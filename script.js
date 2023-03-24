@@ -4,14 +4,18 @@ var form = document.getElementById("form");
 var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
+
 //Getting the data form localstorage
 let list = JSON.parse(localStorage.getItem('list')) || [];
+
 let listLength = list.length;
 //array to store
 let EditList = -1;
-let completedList = []
+
 //Calling function to getvalue in localstorage
 addingTodo();
+
+
 
 //submit
 form.addEventListener('submit', function (event) {
@@ -22,6 +26,7 @@ form.addEventListener('submit', function (event) {
     addingTodo();
     //Adding the data into local storage
     localStorage.setItem('list', JSON.stringify(list));
+
 });
 
 //-----------------         Function to add a value               ------------------
@@ -31,17 +36,17 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        popupNotification("Enter the text to add into list");
+        popupNotification('add');
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
         if (EditList >= 0) {
             input.value = '';
             document.getElementById('btn').innerHTML = "+";
-            popupNotification("There is no change in your list");
+            popupNotification('editDuplicate');
         }
         else {
-            popupNotification("This value already entered in list");
+            popupNotification('duplicate');
         }
 
     }
@@ -57,7 +62,7 @@ function add() {
             document.getElementById('btn').innerHTML = "+";
             // Clearing the inputfield after edting the value
             input.value = '';
-            popupNotification("Changes has been saved in list");
+            popupNotification('editDone');
         }
         else {
             // To store the value
@@ -68,13 +73,15 @@ function add() {
             // Clearing the Inputfield after entering the value
             input.value = '';
             listLength += 1;
-            popupNotification("Your new todo task has been added");
+            popupNotification('add');
         }
     }
 }
 
 // --------------                 Functio to add a todo's --------------------------------------------
 function addingTodo() {
+
+
     // Checking list of length is or not to show a msg
     if (list.length == 0) {
         forward.innerHTML = '<center style="font-size:x-large;">Your Todo List has been empty</center>';
@@ -95,7 +102,9 @@ function addingTodo() {
         <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
     }
+
     );
+
     // Showing length in list
     if (listLength > 0) {
         document.getElementById('listValue').innerHTML = "Value in Todo List = " + listLength;
@@ -104,6 +113,7 @@ function addingTodo() {
 
 //------------------------------       AddEventListener for edit and delete in listView     --------------------------
 forward.addEventListener('click', (event) => {
+
     var target = event.target;
     var click = target.parentNode;
     if (click.className !== 'listview') return;
@@ -128,6 +138,7 @@ function checkList(wl) {
     localStorage.setItem('list', JSON.stringify(list));
 }
 
+
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
     document.getElementById('btn').innerHTML = "save";
@@ -147,7 +158,7 @@ function deleteList(wl) {
         if (listLength == 0) {
             document.getElementById('listValue').innerHTML = " ";
         }
-        popupNotification("Todo has been delete")
+        popupNotification('delete')
         localStorage.setItem('list', JSON.stringify(list));
     }
 }
@@ -156,11 +167,54 @@ function deleteList(wl) {
 
 function popupNotification(msg) {
 
-    const toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.textContent = msg;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-        toast.remove();
-    }, 1300);
+    const toast = document.createElement('div')
+    if (msg == 'add') {
+        toast.classList.add('toast');
+        toast.textContent = "You entered empty value!!!!!!!";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+    else if (msg == 'editDuplicate') {
+        toast.classList.add('toast');
+        toast.textContent = "There is no change in your list";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+    else if (msg == 'duplicate') {
+        toast.classList.add('toast');
+        toast.textContent = "This value already entered in list";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+    else if (msg == 'editDone') {
+        toast.classList.add('toast');
+        toast.textContent = "Changes has been saved in list";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+    else if (msg == 'add') {
+        toast.classList.add('toast');
+        toast.textContent = "Your new todo has been added";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+    else {
+        toast.classList.add('toast');
+        toast.textContent = "Todo has been delete";
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 1300);
+    }
+
 }
