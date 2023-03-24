@@ -30,7 +30,9 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        popupNotification("Enter the text to add into list");
+        msgVale = 0;
+        msgText = "Enter the text to add into list";
+        popupNotification(msgVale,msgText);
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
@@ -152,11 +154,14 @@ function deleteList(wl) {
 }
 
 //----------------------     Popup message ----------------------------
-function popupNotification(msg) {
-    toast.classList.add('toast');
-    toast.textContent = msg;
+function popupNotification(msgVale,msgText) {
+    if(msgVale == 0){
+        toast.classList.add('toast');
+    toast.textContent = msgText;
     setTimeout(() => {
         toast.remove();
     }, 1300);
+    }
+    
 
 }
