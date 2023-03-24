@@ -4,14 +4,11 @@ var form = document.getElementById("form");
 var input = document.getElementById("input");
 //getting id to listing value in html
 var forward = document.getElementById("list");
-
 //Getting the data form localstorage
 let list = JSON.parse(localStorage.getItem('list')) || [];
-
 let listLength = list.length;
 //array to store
 let EditList = -1;
-
 //Calling function to getvalue in localstorage
 addingTodo();
 
@@ -24,7 +21,6 @@ form.addEventListener('submit', function (event) {
     addingTodo();
     //Adding the data into local storage
     localStorage.setItem('list', JSON.stringify(list));
-
 });
 
 //-----------------         Function to add a value               ------------------
@@ -40,6 +36,7 @@ function add() {
     else if (isDuplicate) {
         if (EditList >= 0) {
             input.value = '';
+            document.getElementById('btn').innerHTML = "+";
             popupNotification("There is no change in your list");
         }
         else {
@@ -88,13 +85,16 @@ function addingTodo() {
     list.forEach((todo, index) => {
         forward.innerHTML += `
         <div class="listview" id=${index}>
-        <input type="checkbox" class="checkbox" data-action="check" >
-        <p class="">${todo.value}</p>  
+        <i 
+        class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
+        data-action="check"
+        ></i> 
+        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
         <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
         <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
-    });
-
+    }
+    );
     // Showing length in list
     if (listLength > 0) {
         document.getElementById('listValue').innerHTML = "Value in Todo List = " + listLength;
@@ -103,7 +103,6 @@ function addingTodo() {
 
 //------------------------------       AddEventListener for edit and delete in listView     --------------------------
 forward.addEventListener('click', (event) => {
-
     var target = event.target;
     var click = target.parentNode;
     if (click.className !== 'listview') return;
@@ -112,11 +111,21 @@ forward.addEventListener('click', (event) => {
     // Getting action form the list button 
     var action = target.dataset.action;
     //Calling function to Edit nor delete
+    action == 'check' && checkList(wl);
     action == 'edit' && editList(wl);
     action == 'delete' && deleteList(wl);
 });
 
+// -------------------------------      Completed Function                                 ------------------------------------------
+function checkList(wl) {
+    list = list.map((todo, index) => ({
+        ...todo,
+        checked: index == wl ? !todo.checked : todo.checked,
+    }));
 
+    addingTodo();
+    localStorage.setItem('list', JSON.stringify(list));
+}
 
 // ------------------------------            Editlist function          --------------------------------------------
 function editList(wl) {
@@ -137,13 +146,12 @@ function deleteList(wl) {
         if (listLength == 0) {
             document.getElementById('listValue').innerHTML = " ";
         }
-        popupNotification("Todo has been delete")
-        localStorage.setItem('list', JSON.stringify(list));
+        popupNotification("Todo has been deleted")
+        localStorage.setItem('list', JSON.stringify(list)); 
     }
 }
 
 //----------------------     Popup message ----------------------------
-
 function popupNotification(msg) {
 
     const toast = document.createElement('div');
