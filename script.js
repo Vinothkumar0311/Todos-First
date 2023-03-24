@@ -9,6 +9,7 @@ let list = JSON.parse(localStorage.getItem('list')) || [];
 let listLength = list.length;
 //array to store
 let EditList = -1;
+let completedList = []
 //Calling function to getvalue in localstorage
 addingTodo();
 
@@ -30,9 +31,7 @@ function add() {
     var isDuplicate = list.some((store) => store.value.toUpperCase() === inputValue.toUpperCase());
     //Checking the input is empty or not empty
     if (inputValue.length == 0) {
-        msgVale = 0;
-        msgText = "Enter the text to add into list";
-        popupNotification(msgVale,msgText);
+        popupNotification("Enter the text to add into list");
     }
     //Checking the duplicate value before storig list
     else if (isDuplicate) {
@@ -91,7 +90,7 @@ function addingTodo() {
         class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'} check"
         data-action="check"
         ></i> 
-        <p class="${todo.checked ? 'checked' : ' '} value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? 'checked' : ' '}" data-action="check">${todo.value}</p>
         <button class="btnedit bi bi-pencil-square" data-action="edit"></button>
         <button class="btndelete bi bi-trash" data-action="delete"></button>          
         </div>`;
@@ -148,20 +147,18 @@ function deleteList(wl) {
         if (listLength == 0) {
             document.getElementById('listValue').innerHTML = " ";
         }
-        popupNotification("Todo has been deleted")
+        popupNotification("Todo has been delete")
         localStorage.setItem('list', JSON.stringify(list));
     }
 }
 
 //----------------------     Popup message ----------------------------
-function popupNotification(msgVale,msgText) {
-    if(msgVale == 0){
-        toast.classList.add('toast');
-    toast.textContent = msgText;
+
+function popupNotification(msg) {
+
+    toast.classList.add('toast');
+    toast.textContent = msg;
     setTimeout(() => {
         toast.remove();
     }, 1300);
-    }
-    
-
 }
