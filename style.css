@@ -114,6 +114,7 @@ body {
     font-style: italic;
     font-weight: bold;
     text-align: center;
+    padding-bottom: 5%;
 }
 
 .check {
@@ -136,45 +137,62 @@ body {
 }
 
 @media (max-width: 20000px) {
-    .backgroundbody{        
+    .backgroundbody {
         margin-left: 30%;
-        }
-  } 
-  
-  @media (max-width: 600px) {
-    .backgroundbody{        
+    }
+}
+
+@media (max-width: 600px) {
+    .backgroundbody {
         margin-left: 10%;
         padding-right: 15%;
-        }
+    }
+
+    #form {
+        display: flex;
+        margin-right: 12%;
+    }
+
+    #listValue{
+        padding-bottom: 10%;
+    }
+
     .outerinput {
-        width: 100%;    
+        width: 100%;
         right: 45%;
 
     }
-    .outerinput2{
-        width: 100%;    
+
+    .outerinput2 {
+        width: 100%;
         right: 45%;
     }
-    .value{
+
+    .value {
         margin-left: 15%;
         margin-bottom: 2%;
     }
-    .btnedit{
+
+    .btnedit {
         right: 30%;
     }
-    .btndelete{
+
+    .btndelete {
         right: 20%;
     }
-    .view{
+
+    .view {
         padding-left: 1%;
     }
-    .toast{
+
+    .toast {
         left: 45%;
         width: 40%;
         margin-bottom: 2%;
     }
+
     .check {
         margin-top: 4%;
         left: 13%;
     }
-  }
+}

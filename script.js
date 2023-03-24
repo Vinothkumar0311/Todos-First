@@ -147,17 +147,14 @@ function deleteList(wl) {
             document.getElementById('listValue').innerHTML = " ";
         }
         popupNotification("Todo has been deleted")
-        localStorage.setItem('list', JSON.stringify(list)); 
+        localStorage.setItem('list', JSON.stringify(list));
     }
 }
 
 //----------------------     Popup message ----------------------------
 function popupNotification(msg) {
-
-    const toast = document.createElement('div');
     toast.classList.add('toast');
     toast.textContent = msg;
-    document.body.appendChild(toast);
     setTimeout(() => {
         toast.remove();
     }, 1300);
